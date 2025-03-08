@@ -1,0 +1,11 @@
+   [Unit]
+   Description=First Boot Script
+   After=network.target
+
+   [Service]
+   Type=simple
+   ExecStart=/usr/local/bin/first_boot.sh
+   RemainAfterExit=yes
+
+   [Install]
+   WantedBy=multi-user.target

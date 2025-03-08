@@ -1,0 +1,8 @@
+realpath docker problem
+find ./ -name "*.sh" -exec chmod a+x {} \;
+
+
+
+touch ./stage0/SKIP ./stage1/SKIP ./stage2/SKIP ./stage3/SKIP ./stage-dsf/SKIP ./stage4/SKIP ./stage-dsf-gui/SKIP ./stage-nodered/SKIP
+
+rm ./stage0/SKIP ./stage1/SKIP ./stage2/SKIP ./stage3/SKIP ./stage-dsf/SKIP ./stage4/SKIP ./stage-dsf-gui/SKIP ./stage-nodered/SKIP
