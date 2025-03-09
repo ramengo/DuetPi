@@ -19,7 +19,7 @@ RemainAfterExit=yes
 WantedBy=multi-user.target
 EOSERVICE
 
-on_chroot << 'EEOF'
+on_chroot << 'EOF'
 # Enable first-boot service
 systemctl enable nodered-first-boot.service
-EEOF
+EOF

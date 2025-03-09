@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-on_chroot << 'EEOF'
+on_chroot << 'EOF'
 # Install Node-RED
 npm install -g --unsafe-perm node-red
 
@@ -30,4 +30,4 @@ chown -R pi:pi /home/pi/.node-red
 
 # Enable Node-RED service
 systemctl enable nodered.service
-EEOF
+EOF
