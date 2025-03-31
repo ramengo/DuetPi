@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 on_chroot << EOF
-	mkdir ~/mjpg-streamer
+	mkdir -p ~/mjpg-streamer
 	cd ~/mjpg-streamer
 	git clone https://github.com/jacksonliam/mjpg-streamer.git
 	cd mjpg-streamer/mjpg-streamer-experimental
