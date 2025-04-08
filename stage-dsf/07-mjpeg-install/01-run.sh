@@ -1,14 +1,5 @@
 #!/bin/bash -e
-
-on_chroot << EOF
-	mkdir -p ~/mjpg-streamer
-	cd ~/mjpg-streamer
-	git clone https://github.com/jacksonliam/mjpg-streamer.git
-	cd mjpg-streamer/mjpg-streamer-experimental
-	make
-	make install
-EOF
-
+install -m 755 files/mjpg_streamer "${ROOTFS_DIR}/usr/local/bin/mjpg_streamer"
 install -m 755 files/livestream.sh "${ROOTFS_DIR}/etc/init.d/livestream.sh"
 
 on_chroot << EOF

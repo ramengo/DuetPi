@@ -12,3 +12,14 @@ sudo docker run -it --privileged --volumes-from=pigen_work pi-gen /bin/bash
 touch ./stage0/SKIP ./stage1/SKIP ./stage2/SKIP ./stage3/SKIP ./stage-dsf/SKIP ./stage4/SKIP ./stage-dsf-gui/SKIP ./stage-nodered/SKIP
 
 rm ./stage0/SKIP ./stage1/SKIP ./stage2/SKIP ./stage3/SKIP ./stage-dsf/SKIP ./stage4/SKIP ./stage-dsf-gui/SKIP ./stage-nodered/SKIP
+
+
+
+on_chroot << EOF
+	mkdir -p ~/mjpg-streamer
+	cd ~/mjpg-streamer
+	git clone https://github.com/jacksonliam/mjpg-streamer.git
+	cd mjpg-streamer/mjpg-streamer-experimental
+	make
+	make install
+EOF
