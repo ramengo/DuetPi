@@ -1,0 +1,30 @@
+; daemon.g
+; Questo script viene eseguito ogni minuto dal firmware RepRap
+
+; Configurazione dei parametri della stampante
+;var printerId = 1
+;var materialSet = "PLA"
+;var extruderType = "Direct Drive"
+;var userSatisfaction = 10  ; Puoi aggiornare questo valore con una misura reale
+
+while true
+    ; Raccogli i dati dai sensori della stampante
+    ;var bedTemp = heat.heaters[0].current
+    ;var extruder1Temp = heat.heaters[1].current
+    ;var extruder2Temp = heat.heaters[2].current
+    ;var humidity = sensors.humidity[0].lastReading
+    ;var chamberTemp = sensors.temperatures[0].lastReading
+    ;var extrusionQuantity = move.extruders[0].position
+
+    ; Crea il payload JSON
+    ;var payload = '{"printer_id": ' ^ var.printerId ^ ', "extrusion_quantity": ' ^ var.extrusionQuantity ^ ', "material_set": "' ^ var.materialSet ^ '", "bed_temperature": ' ^ var.bedTemp ^ ', "extruder1_temperature": ' ^ var.extruder1Temp ^ ', "extruder2_temperature": ' ^ var.extruder2Temp ^ ', "humidity": ' ^ var.humidity ^ ', "chamber_temperature": ' ^ var.chamberTemp ^ ', "extruder_type": "' ^ var.extruderType ^ '", "user_satisfaction": ' ^ var.userSatisfaction ^ '}'
+    ; Invia i dati al server
+    ;M118 P3 S"curl -X POST http://<SERVER_IP>:5000/log -H 'Content-Type: application/json' -d '" ^ var.payload ^ "'" ; Sostituisci <SERVER_IP> con l'IP del tuo server
+    M118 L3 S"INVIO DATI! - 60sec"
+    ; Attendi un minuto
+    G4 S60
+
+while true
+
+    M118 L3 S"10 SEC"
+    G4 S10
