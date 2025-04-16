@@ -3,6 +3,9 @@
 
 on_chroot << EOF
 mkdir /etc/X11/xorg.conf.d
+wlr-randr --output HDMI-A-1 --transform 270
+raspi-config nonint do_boot_splash 1
+raspi-config nonint do_wayland W1
 EOF
 
 # Install preference for 10.1' display waves

@@ -9,9 +9,9 @@ docker rm -v pigen_work
 sudo docker run -it --privileged --volumes-from=pigen_work pi-gen /bin/bash
 
 
-touch ./stage0/SKIP ./stage1/SKIP ./stage2/SKIP ./stage3/SKIP ./stage-dsf/SKIP ./stage4/SKIP ./stage-dsf-gui/SKIP ./stage-nodered/SKIP
+touch ./stage0/SKIP ./stage1/SKIP ./stage2/SKIP ./stage-dsf/SKIP ./stage3/SKIP ./stage4/SKIP ./stage-dsf-gui/SKIP ./stage-nodered/SKIP
 
-rm ./stage0/SKIP ./stage1/SKIP ./stage2/SKIP ./stage3/SKIP ./stage-dsf/SKIP ./stage4/SKIP ./stage-dsf-gui/SKIP ./stage-nodered/SKIP
+rm ./stage0/SKIP ./stage1/SKIP ./stage2/SKIP ./stage-dsf/SKIP ./stage3/SKIP ./stage4/SKIP ./stage-dsf-gui/SKIP ./stage-nodered/SKIP
 
 
 
