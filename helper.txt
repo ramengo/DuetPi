@@ -3,6 +3,9 @@ find ./ -name "*.sh" -exec chmod a+x {} \;
 
 
 sudo PRESERVE_CONTAINER=1 ./build-docker.sh -c config_tc
+sudo CONTINUE=1 ./build-docker.sh -c config_tc
+
+
 
 docker rm -v pigen_work
 
