@@ -1,0 +1,14 @@
+#!/bin/bash
+# Script per abilitare solo la configurazione della stampante selezionata
+
+TARGET="${TARGET_PRINTER:-none}"
+
+for dir in */; do
+    PRINTER_NAME="${dir%/}"
+    if [[ "$PRINTER_NAME" =~ ^00-run-(.+)$ ]]; then
+        PRINTER="${BASH_REMATCH[1]}"
+        if [[ "$PRINTER" != "$TARGET" ]]; then
+            touch "${dir}SKIP"
+        fi
+    fi
+done
