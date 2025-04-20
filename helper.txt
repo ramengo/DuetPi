@@ -26,3 +26,12 @@ on_chroot << EOF
 	make
 	make install
 EOF
+
+
+
+sudo PRESERVE_CONTAINER=1 ./build-docker.sh -c config_um
+docker run -it --rm --privileged \
+                --volumes-from="${CONTAINER_NAME}" --name "${CONTAINER_NAME}_cont" \
+                -e IMG_NAME=${IMG_NAME} \
+                pi-gen \
+                bash
