@@ -169,7 +169,7 @@ ls -lah deploy
 
 # cleanup
 if [ "${PRESERVE_CONTAINER}" != "1" ]; then
-	${DOCKER} rm -v "${CONTAINER_NAME}"
+#	${DOCKER} rm -v "${CONTAINER_NAME}"
 fi
 
 echo "Done! Your image(s) should be in deploy/"
