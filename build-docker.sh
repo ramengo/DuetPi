@@ -168,8 +168,8 @@ ${DOCKER} logs --timestamps "${CONTAINER_NAME}" &>deploy/build-docker.log
 ls -lah deploy
 
 # cleanup
-if [ "${PRESERVE_CONTAINER}" != "1" ]; then
+#if [ "${PRESERVE_CONTAINER}" != "1" ]; then
 #	${DOCKER} rm -v "${CONTAINER_NAME}"
-fi
+#fi
 
 echo "Done! Your image(s) should be in deploy/"

@@ -6,10 +6,6 @@ TAILSCALE_REPO="https://pkgs.tailscale.com/stable/debian"
 
 echo "[INFO] Installazione Tailscale per Raspberry Pi"
 
-# Importa chiave GPG del repository Tailscale
-curl -fsSL "${TAILSCALE_REPO}/bookworm.noarmor.gpg" \
-  | gpg --dearmor -o /usr/share/keyrings/tailscale-archive-keyring.gpg
-
 # Aggiunge il repository al sistema
 echo "deb [signed-by=/usr/share/keyrings/tailscale-archive-keyring.gpg] ${TAILSCALE_REPO} bookworm main" > /etc/apt/sources.list.d/tailscale.list
 
