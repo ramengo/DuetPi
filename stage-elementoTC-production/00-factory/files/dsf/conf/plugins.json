@@ -1,0 +1,26 @@
+{
+  "SocketPath": "/run/dsf/dcs.sock",
+  "LogLevel": "info",
+  "PluginDirectory": "/opt/dsf/plugins",
+  "BaseDirectory": "/opt/dsf/sd",
+  "DisableAppArmor": false,
+  "AppArmorParser": "/usr/sbin/apparmor_parser",
+  "AppArmorTemplate": "/opt/dsf/conf/apparmor.conf",
+  "AppArmorProfileDirectory": "/etc/apparmor.d",
+  "PreinstallPackageCommand": "/usr/bin/apt",
+  "PreinstallPackageArguments": "update",
+  "InstallPackageCommand": "/usr/bin/apt",
+  "InstallPackageArguments": "install -y {package}",
+  "InstallPythonPackageCommand": "/opt/dsf/bin/pipInstall2.py",
+  "InstallPythonPackageArguments": "-m {manifestFile} -p {pluginPath}",
+  "InstallPackageEnvironment": {
+    "DEBIAN_FRONTEND": "noninteractive"
+  },
+  "InstallLocalPackageCommand": "/usr/bin/dpkg",
+  "InstallLocalPackageArguments": "--force-confold -i {file}",
+  "UninstallLocalPackageCommand": "/usr/bin/dpkg",
+  "UninstallLocalPackageArguments": "-r {package}",
+  "PythonLaunchCommand": "/bin/bash",
+  "PythonLaunchArguments": "-c \"{pluginDir}/venv/bin/python {command} {args}\"",
+  "StopTimeout": 4000
+}
