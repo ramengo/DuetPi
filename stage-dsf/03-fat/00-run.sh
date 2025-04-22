@@ -1,13 +1,13 @@
 #!/bin/bash -e
 
 # Create default RRF directories
-mkdir "${ROOTFS_DIR}/boot/filaments"
-mkdir "${ROOTFS_DIR}/boot/firmware"
-mkdir "${ROOTFS_DIR}/boot/gcodes"
-mkdir "${ROOTFS_DIR}/boot/macros"
-mkdir "${ROOTFS_DIR}/boot/menu"
-mkdir "${ROOTFS_DIR}/boot/sys"
-mkdir "${ROOTFS_DIR}/boot/www"
+mkdir -p "${ROOTFS_DIR}/boot/filaments"
+mkdir -p "${ROOTFS_DIR}/boot/firmware"
+mkdir -p "${ROOTFS_DIR}/boot/gcodes"
+mkdir -p "${ROOTFS_DIR}/boot/macros"
+mkdir -p "${ROOTFS_DIR}/boot/menu"
+mkdir -p "${ROOTFS_DIR}/boot/sys"
+mkdir -p "${ROOTFS_DIR}/boot/www"
 
 # Install config.g
 install files/config.g "${ROOTFS_DIR}/boot/sys/config.g"

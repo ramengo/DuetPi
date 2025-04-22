@@ -16,5 +16,5 @@ apt-get autoremove -y
 update-alternatives --install /usr/share/desktop-base/duet3d.png desktop-background /usr/share/wallpapers/duet3d.png 80
 update-alternatives --set desktop-background /usr/share/wallpapers/duet3d.png
 
-ln -s /usr/bin/chromium /usr/bin/chromium-browser
+ln -sf /usr/bin/chromium /usr/bin/chromium-browser
 EOF
