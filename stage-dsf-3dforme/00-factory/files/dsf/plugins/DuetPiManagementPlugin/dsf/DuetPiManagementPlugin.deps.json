@@ -1,0 +1,1109 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0/linux-arm",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {},
+    ".NETCoreApp,Version=v6.0/linux-arm": {
+      "DuetPiManagementPlugin/3.4.5": {
+        "dependencies": {
+          "DuetAPI": "3.4.5",
+          "DuetAPIClient": "3.4.5",
+          "runtimepack.Microsoft.NETCore.App.Runtime.linux-arm": "6.0.10"
+        },
+        "runtime": {
+          "DuetPiManagementPlugin.dll": {}
+        }
+      },
+      "runtimepack.Microsoft.NETCore.App.Runtime.linux-arm/6.0.10": {
+        "runtime": {
+          "Microsoft.Win32.Primitives.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.Collections.Concurrent.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.Collections.Immutable.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.Collections.NonGeneric.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.Collections.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.ComponentModel.Primitives.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.ComponentModel.TypeConverter.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.Console.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.Diagnostics.Process.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.Diagnostics.StackTrace.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.IO.Compression.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.IO.MemoryMappedFiles.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.IO.Pipes.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.Linq.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.Memory.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.Net.NameResolution.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.Net.NetworkInformation.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.Net.Primitives.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.Net.Sockets.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.ObjectModel.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.Private.CoreLib.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.Private.Uri.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.Reflection.Metadata.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.Runtime.CompilerServices.Unsafe.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.Runtime.InteropServices.RuntimeInformation.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.Runtime.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.Text.Encodings.Web.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.Text.RegularExpressions.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.Threading.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          },
+          "System.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "6.0.1022.47605"
+          }
+        },
+        "native": {
+          "createdump": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libSystem.Globalization.Native.so": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libSystem.IO.Compression.Native.so": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libSystem.Native.so": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libSystem.Net.Security.Native.so": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libSystem.Security.Cryptography.Native.OpenSsl.so": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libclrjit.so": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libcoreclr.so": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libcoreclrtraceptprovider.so": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libdbgshim.so": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libhostfxr.so": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libhostpolicy.so": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libmscordaccore.so": {
+            "fileVersion": "0.0.0.0"
+          },
+          "libmscordbi.so": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
+      "System.Text.Encodings.Web/6.0.0": {
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        }
+      },
+      "System.Text.Json/6.0.7": {
+        "dependencies": {
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0",
+          "System.Text.Encodings.Web": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/System.Text.Json.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.1122.52304"
+          }
+        }
+      },
+      "DuetAPI/3.4.5": {
+        "dependencies": {
+          "System.Text.Json": "6.0.7"
+        },
+        "runtime": {
+          "DuetAPI.dll": {}
+        }
+      },
+      "DuetAPIClient/3.4.5": {
+        "dependencies": {
+          "DuetAPI": "3.4.5"
+        },
+        "runtime": {
+          "DuetAPIClient.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DuetPiManagementPlugin/3.4.5": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "runtimepack.Microsoft.NETCore.App.Runtime.linux-arm/6.0.10": {
+      "type": "runtimepack",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
+      "path": "system.runtime.compilerservices.unsafe/6.0.0",
+      "hashPath": "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    },
+    "System.Text.Encodings.Web/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Vg8eB5Tawm1IFqj4TVK1czJX89rhFxJo9ELqc/Eiq0eXy13RK00eubyU6TJE6y+GQXjyV5gSfiewDUZjQgSE0w==",
+      "path": "system.text.encodings.web/6.0.0",
+      "hashPath": "system.text.encodings.web.6.0.0.nupkg.sha512"
+    },
+    "System.Text.Json/6.0.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/Tf/9XjprpHolbcDOrxsKVYy/mUG/FS7aGd9YUgBVEiHeQH4kAE0T1sMbde7q6B5xcrNUsJ5iW7D1RvHudQNqA==",
+      "path": "system.text.json/6.0.7",
+      "hashPath": "system.text.json.6.0.7.nupkg.sha512"
+    },
+    "DuetAPI/3.4.5": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DuetAPIClient/3.4.5": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  },
+  "runtimes": {
+    "alpine-arm": [
+      "alpine",
+      "linux-musl-arm",
+      "linux-musl",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "alpine.3.10-arm": [
+      "alpine.3.10",
+      "alpine.3.9-arm",
+      "alpine.3.9",
+      "alpine.3.8-arm",
+      "alpine.3.8",
+      "alpine.3.7-arm",
+      "alpine.3.7",
+      "alpine.3.6-arm",
+      "alpine.3.6",
+      "alpine-arm",
+      "alpine",
+      "linux-musl-arm",
+      "linux-musl",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "alpine.3.11-arm": [
+      "alpine.3.11",
+      "alpine.3.10-arm",
+      "alpine.3.10",
+      "alpine.3.9-arm",
+      "alpine.3.9",
+      "alpine.3.8-arm",
+      "alpine.3.8",
+      "alpine.3.7-arm",
+      "alpine.3.7",
+      "alpine.3.6-arm",
+      "alpine.3.6",
+      "alpine-arm",
+      "alpine",
+      "linux-musl-arm",
+      "linux-musl",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "alpine.3.12-arm": [
+      "alpine.3.12",
+      "alpine.3.11-arm",
+      "alpine.3.11",
+      "alpine.3.10-arm",
+      "alpine.3.10",
+      "alpine.3.9-arm",
+      "alpine.3.9",
+      "alpine.3.8-arm",
+      "alpine.3.8",
+      "alpine.3.7-arm",
+      "alpine.3.7",
+      "alpine.3.6-arm",
+      "alpine.3.6",
+      "alpine-arm",
+      "alpine",
+      "linux-musl-arm",
+      "linux-musl",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "alpine.3.13-arm": [
+      "alpine.3.13",
+      "alpine.3.12-arm",
+      "alpine.3.12",
+      "alpine.3.11-arm",
+      "alpine.3.11",
+      "alpine.3.10-arm",
+      "alpine.3.10",
+      "alpine.3.9-arm",
+      "alpine.3.9",
+      "alpine.3.8-arm",
+      "alpine.3.8",
+      "alpine.3.7-arm",
+      "alpine.3.7",
+      "alpine.3.6-arm",
+      "alpine.3.6",
+      "alpine-arm",
+      "alpine",
+      "linux-musl-arm",
+      "linux-musl",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "alpine.3.14-arm": [
+      "alpine.3.14",
+      "alpine.3.13-arm",
+      "alpine.3.13",
+      "alpine.3.12-arm",
+      "alpine.3.12",
+      "alpine.3.11-arm",
+      "alpine.3.11",
+      "alpine.3.10-arm",
+      "alpine.3.10",
+      "alpine.3.9-arm",
+      "alpine.3.9",
+      "alpine.3.8-arm",
+      "alpine.3.8",
+      "alpine.3.7-arm",
+      "alpine.3.7",
+      "alpine.3.6-arm",
+      "alpine.3.6",
+      "alpine-arm",
+      "alpine",
+      "linux-musl-arm",
+      "linux-musl",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "alpine.3.15-arm": [
+      "alpine.3.15",
+      "alpine.3.14-arm",
+      "alpine.3.14",
+      "alpine.3.13-arm",
+      "alpine.3.13",
+      "alpine.3.12-arm",
+      "alpine.3.12",
+      "alpine.3.11-arm",
+      "alpine.3.11",
+      "alpine.3.10-arm",
+      "alpine.3.10",
+      "alpine.3.9-arm",
+      "alpine.3.9",
+      "alpine.3.8-arm",
+      "alpine.3.8",
+      "alpine.3.7-arm",
+      "alpine.3.7",
+      "alpine.3.6-arm",
+      "alpine.3.6",
+      "alpine-arm",
+      "alpine",
+      "linux-musl-arm",
+      "linux-musl",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "alpine.3.16-arm": [
+      "alpine.3.16",
+      "alpine.3.15-arm",
+      "alpine.3.15",
+      "alpine.3.14-arm",
+      "alpine.3.14",
+      "alpine.3.13-arm",
+      "alpine.3.13",
+      "alpine.3.12-arm",
+      "alpine.3.12",
+      "alpine.3.11-arm",
+      "alpine.3.11",
+      "alpine.3.10-arm",
+      "alpine.3.10",
+      "alpine.3.9-arm",
+      "alpine.3.9",
+      "alpine.3.8-arm",
+      "alpine.3.8",
+      "alpine.3.7-arm",
+      "alpine.3.7",
+      "alpine.3.6-arm",
+      "alpine.3.6",
+      "alpine-arm",
+      "alpine",
+      "linux-musl-arm",
+      "linux-musl",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "alpine.3.17-arm": [
+      "alpine.3.17",
+      "alpine.3.16-arm",
+      "alpine.3.16",
+      "alpine.3.15-arm",
+      "alpine.3.15",
+      "alpine.3.14-arm",
+      "alpine.3.14",
+      "alpine.3.13-arm",
+      "alpine.3.13",
+      "alpine.3.12-arm",
+      "alpine.3.12",
+      "alpine.3.11-arm",
+      "alpine.3.11",
+      "alpine.3.10-arm",
+      "alpine.3.10",
+      "alpine.3.9-arm",
+      "alpine.3.9",
+      "alpine.3.8-arm",
+      "alpine.3.8",
+      "alpine.3.7-arm",
+      "alpine.3.7",
+      "alpine.3.6-arm",
+      "alpine.3.6",
+      "alpine-arm",
+      "alpine",
+      "linux-musl-arm",
+      "linux-musl",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "alpine.3.6-arm": [
+      "alpine.3.6",
+      "alpine-arm",
+      "alpine",
+      "linux-musl-arm",
+      "linux-musl",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "alpine.3.7-arm": [
+      "alpine.3.7",
+      "alpine.3.6-arm",
+      "alpine.3.6",
+      "alpine-arm",
+      "alpine",
+      "linux-musl-arm",
+      "linux-musl",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "alpine.3.8-arm": [
+      "alpine.3.8",
+      "alpine.3.7-arm",
+      "alpine.3.7",
+      "alpine.3.6-arm",
+      "alpine.3.6",
+      "alpine-arm",
+      "alpine",
+      "linux-musl-arm",
+      "linux-musl",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "alpine.3.9-arm": [
+      "alpine.3.9",
+      "alpine.3.8-arm",
+      "alpine.3.8",
+      "alpine.3.7-arm",
+      "alpine.3.7",
+      "alpine.3.6-arm",
+      "alpine.3.6",
+      "alpine-arm",
+      "alpine",
+      "linux-musl-arm",
+      "linux-musl",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "android-arm": [
+      "android",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "android.21-arm": [
+      "android.21",
+      "android-arm",
+      "android",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "android.22-arm": [
+      "android.22",
+      "android.21-arm",
+      "android.21",
+      "android-arm",
+      "android",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "android.23-arm": [
+      "android.23",
+      "android.22-arm",
+      "android.22",
+      "android.21-arm",
+      "android.21",
+      "android-arm",
+      "android",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "android.24-arm": [
+      "android.24",
+      "android.23-arm",
+      "android.23",
+      "android.22-arm",
+      "android.22",
+      "android.21-arm",
+      "android.21",
+      "android-arm",
+      "android",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "android.25-arm": [
+      "android.25",
+      "android.24-arm",
+      "android.24",
+      "android.23-arm",
+      "android.23",
+      "android.22-arm",
+      "android.22",
+      "android.21-arm",
+      "android.21",
+      "android-arm",
+      "android",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "android.26-arm": [
+      "android.26",
+      "android.25-arm",
+      "android.25",
+      "android.24-arm",
+      "android.24",
+      "android.23-arm",
+      "android.23",
+      "android.22-arm",
+      "android.22",
+      "android.21-arm",
+      "android.21",
+      "android-arm",
+      "android",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "android.27-arm": [
+      "android.27",
+      "android.26-arm",
+      "android.26",
+      "android.25-arm",
+      "android.25",
+      "android.24-arm",
+      "android.24",
+      "android.23-arm",
+      "android.23",
+      "android.22-arm",
+      "android.22",
+      "android.21-arm",
+      "android.21",
+      "android-arm",
+      "android",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "android.28-arm": [
+      "android.28",
+      "android.27-arm",
+      "android.27",
+      "android.26-arm",
+      "android.26",
+      "android.25-arm",
+      "android.25",
+      "android.24-arm",
+      "android.24",
+      "android.23-arm",
+      "android.23",
+      "android.22-arm",
+      "android.22",
+      "android.21-arm",
+      "android.21",
+      "android-arm",
+      "android",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "android.29-arm": [
+      "android.29",
+      "android.28-arm",
+      "android.28",
+      "android.27-arm",
+      "android.27",
+      "android.26-arm",
+      "android.26",
+      "android.25-arm",
+      "android.25",
+      "android.24-arm",
+      "android.24",
+      "android.23-arm",
+      "android.23",
+      "android.22-arm",
+      "android.22",
+      "android.21-arm",
+      "android.21",
+      "android-arm",
+      "android",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "android.30-arm": [
+      "android.30",
+      "android.29-arm",
+      "android.29",
+      "android.28-arm",
+      "android.28",
+      "android.27-arm",
+      "android.27",
+      "android.26-arm",
+      "android.26",
+      "android.25-arm",
+      "android.25",
+      "android.24-arm",
+      "android.24",
+      "android.23-arm",
+      "android.23",
+      "android.22-arm",
+      "android.22",
+      "android.21-arm",
+      "android.21",
+      "android-arm",
+      "android",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "android.31-arm": [
+      "android.31",
+      "android.30-arm",
+      "android.30",
+      "android.29-arm",
+      "android.29",
+      "android.28-arm",
+      "android.28",
+      "android.27-arm",
+      "android.27",
+      "android.26-arm",
+      "android.26",
+      "android.25-arm",
+      "android.25",
+      "android.24-arm",
+      "android.24",
+      "android.23-arm",
+      "android.23",
+      "android.22-arm",
+      "android.22",
+      "android.21-arm",
+      "android.21",
+      "android-arm",
+      "android",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "debian-arm": [
+      "debian",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "debian.10-arm": [
+      "debian.10",
+      "debian-arm",
+      "debian",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "debian.11-arm": [
+      "debian.11",
+      "debian-arm",
+      "debian",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "debian.8-arm": [
+      "debian.8",
+      "debian-arm",
+      "debian",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "debian.9-arm": [
+      "debian.9",
+      "debian-arm",
+      "debian",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "linux-arm": [
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "linux-musl-arm": [
+      "linux-musl",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "ubuntu-arm": [
+      "ubuntu",
+      "debian-arm",
+      "debian",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "ubuntu.14.04-arm": [
+      "ubuntu.14.04",
+      "ubuntu-arm",
+      "ubuntu",
+      "debian-arm",
+      "debian",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "ubuntu.14.10-arm": [
+      "ubuntu.14.10",
+      "ubuntu-arm",
+      "ubuntu",
+      "debian-arm",
+      "debian",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "ubuntu.15.04-arm": [
+      "ubuntu.15.04",
+      "ubuntu-arm",
+      "ubuntu",
+      "debian-arm",
+      "debian",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "ubuntu.15.10-arm": [
+      "ubuntu.15.10",
+      "ubuntu-arm",
+      "ubuntu",
+      "debian-arm",
+      "debian",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "ubuntu.16.04-arm": [
+      "ubuntu.16.04",
+      "ubuntu-arm",
+      "ubuntu",
+      "debian-arm",
+      "debian",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "ubuntu.16.10-arm": [
+      "ubuntu.16.10",
+      "ubuntu-arm",
+      "ubuntu",
+      "debian-arm",
+      "debian",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "ubuntu.17.04-arm": [
+      "ubuntu.17.04",
+      "ubuntu-arm",
+      "ubuntu",
+      "debian-arm",
+      "debian",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "ubuntu.17.10-arm": [
+      "ubuntu.17.10",
+      "ubuntu-arm",
+      "ubuntu",
+      "debian-arm",
+      "debian",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "ubuntu.18.04-arm": [
+      "ubuntu.18.04",
+      "ubuntu-arm",
+      "ubuntu",
+      "debian-arm",
+      "debian",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "ubuntu.18.10-arm": [
+      "ubuntu.18.10",
+      "ubuntu-arm",
+      "ubuntu",
+      "debian-arm",
+      "debian",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "ubuntu.19.04-arm": [
+      "ubuntu.19.04",
+      "ubuntu-arm",
+      "ubuntu",
+      "debian-arm",
+      "debian",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "ubuntu.19.10-arm": [
+      "ubuntu.19.10",
+      "ubuntu-arm",
+      "ubuntu",
+      "debian-arm",
+      "debian",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "ubuntu.20.04-arm": [
+      "ubuntu.20.04",
+      "ubuntu-arm",
+      "ubuntu",
+      "debian-arm",
+      "debian",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "ubuntu.20.10-arm": [
+      "ubuntu.20.10",
+      "ubuntu-arm",
+      "ubuntu",
+      "debian-arm",
+      "debian",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "ubuntu.21.04-arm": [
+      "ubuntu.21.04",
+      "ubuntu-arm",
+      "ubuntu",
+      "debian-arm",
+      "debian",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "ubuntu.21.10-arm": [
+      "ubuntu.21.10",
+      "ubuntu-arm",
+      "ubuntu",
+      "debian-arm",
+      "debian",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ],
+    "ubuntu.22.04-arm": [
+      "ubuntu.22.04",
+      "ubuntu-arm",
+      "ubuntu",
+      "debian-arm",
+      "debian",
+      "linux-arm",
+      "linux",
+      "unix-arm",
+      "unix",
+      "any",
+      "base"
+    ]
+  }
+}
