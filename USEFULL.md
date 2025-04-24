@@ -11,23 +11,29 @@ sudo find ./ -name "*.sh" -exec chmod a+x {} \;
 realpath docker problem
 find ./ -name "*.sh" -exec chmod a+x {} \;
 
-
+### try to preserve container, but it doesn't work.
 sudo PRESERVE_CONTAINER=1 ./build-docker.sh -c config_tc
 sudo CONTINUE=1 ./build-docker.sh -c config_tc
 
 sudo CONTAINER_NAME=FABBRIX_TC PRESERVE_CONTAINER=1 ./build-docker.sh -c config_tc
 
+
+### remove container after fail
 docker rm -v pigen_work
 
+
+### navigate container
 sudo docker run -it --privileged --volumes-from=pigen_work pi-gen /bin/bash
 
 
+
+### create and rm skip stage
 touch ./stage0/SKIP ./stage1/SKIP ./stage2/SKIP ./stage-dsf/SKIP ./stage3/SKIP ./stage4/SKIP ./stage-dsf-gui/SKIP ./stage-nodered/SKIP
 
 rm ./stage0/SKIP ./stage1/SKIP ./stage2/SKIP ./stage-dsf/SKIP ./stage3/SKIP ./stage4/SKIP ./stage-dsf-gui/SKIP ./stage-nodered/SKIP
 
 
-
+### compile mjpg-streamer on rpi
 on_chroot << EOF
 	mkdir -p ~/mjpg-streamer
 	cd ~/mjpg-streamer

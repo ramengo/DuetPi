@@ -1,11 +1,5 @@
-M190 S55
-T-1 
-G29 S2
-M561
-G32        ; set Z probe type to bltouch and the dive height + speeds
-T0 P0
-G1 X500 Y300 F2000
-G30 S-2
-G29 K0 S0
-T-1 P0
-G1 Z100 F1000
+M561 ;Disable previous bed compesation
+M190 S60
+M109 S150
+M98 P"0:/sys/homeall.g"
+G29
