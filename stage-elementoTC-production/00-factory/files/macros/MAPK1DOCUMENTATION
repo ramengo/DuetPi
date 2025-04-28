@@ -1,0 +1,9 @@
+G29 S2                       ; Disable mesh bed compensation
+M18 C
+G28 Z                        ; Home Z
+G1 Z6                        ; To avoid backlash move to point higher than start of calibration
+M558.1 K1 S1.7               ; Calibrate probe
+G30 Z2 K1
+G1 Z6                        ; Move up at end of calibration
+G92 C0
+G29 S0 K1                    ; Scan bed and create mesh
