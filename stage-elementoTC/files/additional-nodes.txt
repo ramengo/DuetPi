@@ -1,2 +1,0 @@
-node-red-dashboard
-node-red-contrib-modbus

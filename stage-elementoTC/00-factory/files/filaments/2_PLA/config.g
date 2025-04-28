@@ -1,1 +1,0 @@
-;M572 D0 S0.010							;Pressure Adv PLA settings
