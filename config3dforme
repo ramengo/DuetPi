@@ -1,0 +1,9 @@
+export IMG_NAME="3DforMe"
+export TARGET_HOSTNAME="3dforme"
+export DEPLOY_COMPRESSION="xz"
+export ENABLE_SSH=1
+export FIRST_USER_NAME="pi"
+export FIRST_USER_PASS="f@6brix"
+export STAGE_LIST="stage0 stage1 stage2 stage-dsf stage3 stage4 stage-dsf-gui stage-dsf-3dforme"
+export USE_QCOW2=0
+export APT_PROXY="http://127.0.0.1:3142"

@@ -1,0 +1,8 @@
+export IMG_NAME="ElementoTCB"
+export TARGET_HOSTNAME="ElementoTCB"
+export ENABLE_SSH=1
+export FIRST_USER_NAME="pi"
+export FIRST_USER_PASS="f@6brix"
+export STAGE_LIST="stage0 stage1 stage2 stage-dsf-beta stage3 stage4 stage-dsf-gui stage-nodered-full stage-elementoTC-production"
+export USE_QCOW2=0
+export APT_PROXY="http://127.0.0.1:3142"
