@@ -1,0 +1,3 @@
+node-red-dashboard
+node-red-contrib-modbus
+node-red-contrib-dsfnode
