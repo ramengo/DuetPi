@@ -1,0 +1,108 @@
+;  Default config.g template for DuetPi for Fabbrix Elemento V2.1 (beta)
+
+G90                                                ; send absolute coordinates....
+M83                                                ; ...but relative extruder moves
+M550 P"ElementoTC-beta"                                 ; set printer name
+
+; Drives
+M569 P0.0 S0 D3                                      ; physical drive 0.0 goes forwards
+M569 P0.1 S1 D3                                      ; physical drive 0.1 goes forwards
+M569 P0.2 S1 D3                                     ; physical drive 0.2 goes forwards
+M569 P0.3 S0 D2                                      ; physical drive 0.3 goes forwards
+M584 X0.0 Y0.1 Z0.2 E0.3                       ; set drive mapping
+; set microstepping
+M350 X16 Y16 Z16 I1
+M350 E4 I1                           				; configure microstepping with interpolation
+; set step mm
+M92 X320.00 Y320.00 Z640.00 E128.00            ; set steps per mm
+; set maximum instantaneous speed changes (mm/min)
+M566 X300.00 Y300.00 Z10.00 E120.00         			;E1->120
+; set maximum speeds (mm/min)
+M203 X10000.00 Y10000.00 Z180.00 E1200.00 	
+; set accelerations (mm/s^2)
+M201 X100.00 Y100.00 Z5.00 E1800.00     				;E5->1800
+M204 P200 T200							;M204 P100->300 T100->400
+; set motor currents (mA) and motor idle factor in per cent    
+M906 X3200 Y3000 Z3200 E700 I30  ;E1800->1000             
+; Set idle timeout
+M84 S10                                            
+
+; Axis Limits
+M208 X-50 Y-5 Z-5 S1                              ; set axis minima
+M208 X1000 Y560 Z530 S0                            ; set axis maxima
+
+; Endstops
+M574 X1 S1 P"!io0.in"                               ; configure active-high endstop for low end on X via pin io0.in
+M574 Y1 S1 P"!io1.in"                               ; configure active-high endstop for low end on Y via pin io1.in
+M574 Z1 S2  
+M574 Z2 S1 P"!io2.in"							   ; configure actuve-high endstop for up end on Z via pin io3.in                                        				;configure Z-probe endstop for low end on Z
+
+
+; Z-Probe DC42
+M558 A1 B0 P8 Z1 C"io4.in" H5 F150 T1000 R0.5 S0.05              ; set Z probe type to bltouch and the dive height + speeds
+;M950 S0 C"io4.out"                              ; create servo pin 0 for BLTouch
+G31 P25 X0 Y50                      		; set Z probe trigger value, offset and trigger height
+M557 X0:1000 Y45:530 P6:4  
+M376 H5
+
+; Heaters
+M308 S0 P"temp0" Y"thermistor" T100000 B4450       ; configure sensor 0 as thermistor on pin temp0
+M950 H0 C"out0" T0                                 ; create bed heater output on out0 and map it to sensor 0
+M307 H0 R0.016 K0.052:0.000 D55.46 E1.35 S1.00 B0                             ; disable bang-bang mode for the bed heater and set PWM limit
+M140 H0              							; map heated bed to heater 0
+M143 H0 S120                                       ; set temperature limit for heater 0 to 120C
+M570 H0 P720 
+M308 S1 P"temp1" Y"pt1000"                          ; configure sensor 1 as thermistor on pin temp1
+M950 H1 C"^out1" T1                                 ; create nozzle heater output on out2 and map it to sensor 2
+M307 H1 R2.096 K0.564:0.213 D7.20 E1.00 S1.00 B0 V24.2                               ; disable bang-bang mode for heater  and set PWM limit
+M143 H1 S320                                       ; set temperature limit for heater 1 to 280C
+M308 S3 A"Chamber" P"temp3" Y"thermistor" T100000 B3950 H-2 L16
+M950 H3 C"!out3" T3                                 ; create chamber heater output on out3 and map it to sensor 3
+M141 H3                                            ; map chamber to heater 3
+M143 H3 A2 S90                                    ; set temperature limit for heater 3 to 280C
+M570 H3 P120 T80
+
+; Fans Nozzle T0
+M950 F0 C"out4" Q500                               ; create fan 0 on pin out4 and set its frequency
+M106 P0 S0 H-1                                           ; set fan 0 value. Thermostatic control is turned off                                         ; set fan 0 value. Thermostatic control is turned off
+;Fan Dissipator + Motor
+M950 F1 C"out6" Q500                               ; create fan 1 on pin out5 and set its frequency
+M106 P1 S1 H1:2:0 T45                            ; set fan 1 value. Thermostatic control is turned on
+                          ; set fan 2 value. Thermostatic control is turned on
+
+; Led
+M950 F3 C"out7"
+M106 P3 B300 C"LED" S1
+M106 P3 S1
+;Fan QC
+M950 F4 C"out8"
+M106 P4 B300 C"QC" S1
+M106 P4 S1
+
+; Tools
+M563 P0 S"T0" D0 H1 F0                             ; define tool 0
+G10 P0 X0 Y0 Z0                                    ; set tool 0 axis offsets
+G10 P0 R0 S0                                       ; set initial tool 0 active and standby temperatures to 0C 
+                                    ; set initial tool 1 active and standby temperatures to 0C
+;END FILAMENT SENSOR
+M591 D0 C"^io6.in" P1 S1								; END FILAMENT T0 SWITCH NO TO gnd. 
+
+;Door Control Back
+M950 J3 C"!io3.in"
+M581 T4 P3 S0 R0
+;Door Control Front
+M950 J5 C"^io5.in"
+M581 T5 P5 S0 R0
+
+;NEOPIXEL
+M950 E0 C"led" T1 Q3000000 
+M150 E0 R255 U40 B0 P20
+; Custom settings
+
+M586 P1 S1 C"*"
+; Miscellaneous
+M911 S10 R11 P"M913 X0 Y0 G91 M83 G1 Z3 E-5 F1000" ; set voltage thresholds and actions to run on power loss
+T0                                                 ; select first tool
+M555 P2	; Set marlin compatibility
+M501
+M929 S3

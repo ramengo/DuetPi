@@ -1,0 +1,22 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information"
+    }
+  },
+  "Kestrel": {
+    "Endpoints": {
+      "Http": {
+        "Url": "http://*"
+      }
+    }
+  },
+  "KeepAliveInterval": 30,
+  "SessionTimeout": 8000,
+  "ModelRetryDelay": 5000,
+  "UseStaticFiles": true,
+  "DefaultWebDirectory": "/opt/dsf/sd/www",
+  "MaxAge": 3600,
+  "SocketPath": "/var/run/dsf/dcs.sock",
+  "WebSocketBufferSize": 8192
+}
