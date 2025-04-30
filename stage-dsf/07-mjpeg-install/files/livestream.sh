@@ -12,12 +12,12 @@
 f_message(){
         echo "[+] $1"
 }
- 
+
 # Carry out specific functions when asked to by the system
 case "$1" in
         start)
                 f_message "Starting mjpg_streamer"
-                /usr/local/bin/mjpg_streamer -b -i "input_uvc.so -rot 90 -f 15 -r 1920x1080" -o "output_http.so -w /usr/local/share/mjpg-streamer/www"-b 
+                /usr/local/bin/mjpg_streamer -b -i "input_uvc.so -rot 90 -f 15 -r 1920x1080" -o "output_http.so -w /usr/local/share/mjpg-streamer/www" -b
                 sleep 2
                 f_message "mjpg_streamer started"
                 ;;
