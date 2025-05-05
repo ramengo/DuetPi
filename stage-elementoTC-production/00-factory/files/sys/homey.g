@@ -1,14 +1,3 @@
-;Y sensorless
-;M915 P71.0 S0 F0 H175 R0
-;M915 P72.0 S0 F0 H175 R0
-;M574 Y1 S4		
-;M913 C70
-;G1 H1 Y-900 F2000 ; move quickly to X axis endstop and stop there (first pass)
-;G1 C20 F1000     ; go back a few mm
-;G1 H1 Y-900 F2000; move slowly to X axis endstop once more (second pass)
-;G90                ; absolute positioning
-;M913 C100
-
 ; homey.g
 ; called to home the Y axis
 ;

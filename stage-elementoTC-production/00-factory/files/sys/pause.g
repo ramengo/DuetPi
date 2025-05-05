@@ -8,6 +8,4 @@ G1 E-1 F3600  ; retract 10mm of filament
 G91            ; relative positioning
 G1 Z5 F360     ; lift Z by 5mm
 G90            ; absolute positioning
-G1 X-20 Y20 F4000 ; go to X=0 Y=0
-
-
+G0 X500 Y-10 F3000

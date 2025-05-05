@@ -9,9 +9,9 @@ M591 D0 S1
 M591 D1 S0
 ;M118 S"TPRE0"
 M564 H0 S0
-G0 C0 F18000
+G0 C0 F10000
 G0 X{global.xPT1Position} Y{move.axes[1].min} F8000
-G0 Y{move.axes[1].min - global.yPT1Position} F2000
+G0 Y{move.axes[1].min - global.yPT1Position} F8000
 M400
 G0 C60 F10000
 M400

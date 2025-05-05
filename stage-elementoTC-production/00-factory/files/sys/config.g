@@ -9,12 +9,12 @@ M952 B0 S1000
 ; Wait a moment for the CAN expansion boards to become available
 G4 S4
 
-M569.1 P70.0 T3 R50 I0 D0.1
-M569.1 P71.0 T3 R50 I0 D0.1
-M569.1 P72.0 T3 R50 I0 D0.1
-M569.1 P73.0 T3 R50 I0 D0.1
-M569.1 P74.0 T3 R50 I0 D0.1
-M569.1 P75.0 T3 R50 I0 D0.1
+M569.1 P70.0 T3 E4:8 R50 I0 D0.2
+M569.1 P71.0 T3 E4:8 R50 I0 D0.2
+M569.1 P72.0 T3 E4:8 R50 I0 D0.2
+M569.1 P73.0 T3 E4:8 R50 I0 D0.1
+M569.1 P74.0 T3 E4:8 R50 I0 D0.1
+M569.1 P75.0 T3 E4:8 R50 I0 D0.1
 
 ; Smart Drivers
 M569 P70.0 S0 D4                                       ; driver 70.0 goes forwards (X axis)
@@ -166,7 +166,7 @@ M563 P0 S"T0" D0 H1 F0                                 ; create tool #0
 M568 P0 R0 S0                                          ; set initial tool #0 active and standby temperatures to 0C
 M563 P1 S"T1" D1 H2 F0                                 ; create tool #0
 M568 P1 R0 S0 
-M591 D0 P3 A1 L26.3 R60:120 C"121.io1.in" E3 S2        ; MFM config
+;M591 D0 P3 A1 L26.3 R60:120 C"121.io1.in" E3 S2        ; MFM config
 
 ; Miscellaneous
 ;T0                                       ; select first tool
@@ -181,6 +181,10 @@ if sensors.gpIn[6].value == 1 && sensors.gpIn[7].value == 1
     T1 P0
     G92 C60
     
+
+global bedTemperatureT0 = 0
+global bedTemperatureT1 = 0
+
 global xPT0Position = 480
 global yPT0Position = 0
 
