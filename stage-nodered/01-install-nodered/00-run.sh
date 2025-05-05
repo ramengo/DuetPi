@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash 
 
 on_chroot << 'EOF'
 # Install Node-RED
