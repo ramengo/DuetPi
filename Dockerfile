@@ -13,4 +13,4 @@ RUN apt-get -y update && \
 
 COPY . /pi-gen/
 
-VOLUME [ "/pi-gen/work", "/pi-gen/deploy"]
+VOLUME [ "dsf/pi-gen/work", "dsf/pi-gen/deploy"]
