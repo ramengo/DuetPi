@@ -7,6 +7,7 @@
 G90                                                   ; send absolute coordinates...
 M83                                                   ; ...but relative extruder moves
 M550 P"UM2"                                           ; set printer name
+;M591 D0 P3 A1 L25.3 R98:102 C"121.io1.in" E0.2 S2                               ; MFM config from sd card old
 
 ; Drives
 M569 P0.0 S0                                          ; physical drive 0.0 goes backwards
