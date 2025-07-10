@@ -1,75 +1,152 @@
+; ========================================
+; CALIBRAZIONE PARCHEGGIO UTENSILI T0 E T1
+; ========================================
+; Versione: 1.0
+; Data: 7 Luglio 2025
+; Autore: Sistema Auto-Calibrazione
+; ========================================
+
+; Inizializzazione file di log
+
+echo "=========================================="
+echo "AVVIO CALIBRAZIONE PARCHEGGIO UTENSILI"
+echo "Sistema: Calibrazione Parcheggio T0-T1"
+echo "Stato: Inizializzazione sistema"
+echo "=========================================="
+echo >>"eventlog.txt" "AVVIO CALIBRAZIONE PARCHEGGIO UTENSILI: ", state.time
+
+; ========================================
+; CALIBRAZIONE PARCHEGGIO T0
+; ========================================
 T-1
-M291 R"Calibrazione Parcheggio T0 - AVVERTENZA IMPORTANTE" P"ATTENZIONE: Questa procedura cancellerà tutti gli offset! Procedere esclusivamente se strettamente necessario e sotto supervisione dell'assistenza tecnica." S2
+M291 R"Calibrazione Parcheggio T0 - Attenzione" P"AVVISO: Questa procedura eliminera tutti gli offset esistenti! Procedere solo se necessario e con supervisione tecnica." S2
 M30 sys/yPT0-offset.g
+
+echo "=========================================="
+echo "FASE 1 T0: PREPARAZIONE"
+echo "Eliminazione file di configurazione precedente"
+echo "=========================================="
+echo >>"eventlog.txt" "FASE 1 T0: PREPARAZIONE - Inizio procedura a ", state.time
+
 G28        ;da valutare quando e come far lasciare il tool o cosa farne del tool se serve che sia agganciato
 G0 C0 F6000     ;Azzeramento Tool
-M291 R"Calibrazione Parcheggio T0 - Fase di Homing" P"Esecuzione dell'azzeramento degli assi in corso. Attendere il completamento dell'operazione."
+M291 R"Calibrazione Parcheggio T0 - Homing" P"Azzeramento assi in corso. Attendere il completamento della procedura." S0 T5
 G0 Z200 F1500
 M564 H0 S0 ;disabilita i limiti software e permette di muovere assi non azzerati
 G0 X{global.xPT0Position} Y200 F10000
-M291 R"Calibrazione Parcheggio T0 - Posizionamento Utensile" P"Posizionare manualmente l'utensile T0 sul sistema di cambio utensile (ToolChange). Verificare il corretto allineamento prima di premere OK per continuare." S2
+
+echo "=========================================="
+echo "FASE 2 T0: POSIZIONAMENTO"
+echo "Posizione X: ", global.xPT0Position
+echo "Posizione Y: 200"
+echo "=========================================="
+echo >>"eventlog.txt" "FASE 2 T0: POSIZIONAMENTO - X:", global.xPT0Position, " Y:200"
+
+M291 R"Calibrazione Parcheggio T0 - Posizionamento" P"Posizionare manualmente utensile T0 sul sistema di cambio. Verificare allineamento prima di continuare." S2
 G0 C60 F6000
-M291 R"Calibrazione Parcheggio T0 - Verifica Stabilità" P"Verificare che l'utensile sia correttamente sostenuto e stabile. RIMUOVERE IMMEDIATAMENTE le mani dall'area di stampa prima di procedere. Premere OK" S2
+M291 R"Calibrazione Parcheggio T0 - Sicurezza" P"Verificare che utensile sia stabile. RIMUOVERE SUBITO le mani dalla zona di stampa. Premere OK per procedere." S2
 G0 Y{move.axes[1].min} F3000
 M564 H0 S0
 G91
+
+echo "=========================================="
+echo "FASE 3 T0: AVVICINAMENTO GROSSOLANO"
+echo "Movimento verso il minimo Y: ", move.axes[1].min
+echo "=========================================="
+echo >>"eventlog.txt" "FASE 3 T0: AVVICINAMENTO GROSSOLANO - Minimo Y:", move.axes[1].min
+
 while true
-    M291 R"Calibrazione T0, avvicinati a 5mm dalle spine di parcheggio" P"Scegliere l'azione:" S4 K{"-5mm","+5mm","Prossima Fase","CANCELLA"}
+    M291 R"Calibrazione T0 - Avvicinamento" P"Regolare posizione rispetto alle spine di parcheggio:" S4 K{"-5mm","+5mm","Prossima Fase","Annulla"}
     if input = 0
         G91
         G1 Y-5 F600
         G90
         M400
+        echo "Movimento Y: -5mm - Posizione attuale: ", move.axes[1].machinePosition
     elif input = 1
         G91
         G1 Y5 F600
         G90
         M400
-	elif input = 2
+        echo "Movimento Y: +5mm - Posizione attuale: ", move.axes[1].machinePosition
+    elif input = 2
+        echo "Fase grossolana completata - Posizione finale: ", move.axes[1].machinePosition
+        echo >>"eventlog.txt" "T0 Fase grossolana completata - Posizione: ", move.axes[1].machinePosition
         break
     elif input = 3
-        abort "Calibrazione TC su T0 annullata"
+        echo >>"eventlog.txt" "Calibrazione T0 annullata dall'utente"
+        abort "Calibrazione parcheggio T0 annullata"
+
+echo "=========================================="
+echo "FASE 4 T0: REGOLAZIONE MEDIA"
+echo "=========================================="
+echo >>"eventlog.txt" "FASE 4 T0: REGOLAZIONE MEDIA"
 
 while true
-    M291 R"Calibrazione T0 Fine, centra le spine fino a inserirne metà nel tool" P"Scegliere l'azione:" S4 K{"-1mm","+1mm","Prossima Fase","CANCELLA"}
+    M291 R"Calibrazione T0 - Regolazione Media" P"Centrare spine inserendole parzialmente nel tool:" S4 K{"-1mm","+1mm","Prossima Fase","Annulla"}
     if input = 0
         G91
         G1 Y-1 F400
         G90
         M400
+        echo "Movimento Y: -1mm - Posizione attuale: ", move.axes[1].machinePosition
     elif input = 1
         G91
         G1 Y1 F400
         G90
         M400
-	elif input = 2
+        echo "Movimento Y: +1mm - Posizione attuale: ", move.axes[1].machinePosition
+    elif input = 2
+        echo "Fase media completata - Posizione finale: ", move.axes[1].machinePosition
+        echo >>"eventlog.txt" "T0 Fase media completata - Posizione: ", move.axes[1].machinePosition
         break
     elif input = 3
-        abort "Calibrazione TC su T0 annullata"
+        echo >>"eventlog.txt" "Calibrazione T0 annullata dall'utente"
+        abort "Calibrazione parcheggio T0 annullata"
+
+echo "=========================================="
+echo "FASE 5 T0: REGOLAZIONE FINE"
+echo "=========================================="
+echo >>"eventlog.txt" "FASE 5 T0: REGOLAZIONE FINE"
 
 while true
-    M291 R"Calibrazione T0 Fine, inserisci spessimetro tra parcheggio e profilo di alluminio e muovi il tool fino a sentire una resistenza" P"Scegliere l'azione:" S4 K{"-0.1mm","+0.1mm","Salva Parcheggio T0","CANCELLA"}
+    M291 R"Calibrazione T0 - Regolazione Fine" P"Inserire spessimetro tra parcheggio e profilo alluminio. Regolare fino a sentire resistenza:" S4 K{"-0.1mm","+0.1mm","Salva Posizione","Annulla"}
     if input = 0
         G91
         G1 Y-0.1 F200
         G90
         M400
+        echo "Movimento Y: -0.1mm - Posizione attuale: ", move.axes[1].machinePosition
     elif input = 1
         G91
         G1 Y0.1 F200
         G90
         M400
-	elif input = 2
+        echo "Movimento Y: +0.1mm - Posizione attuale: ", move.axes[1].machinePosition
+    elif input = 2
+        echo "Fase fine completata - Posizione finale: ", move.axes[1].machinePosition
+        echo >>"eventlog.txt" "T0 Fase fine completata - Posizione: ", move.axes[1].machinePosition
         break
     elif input = 3
-        abort "Calibrazione TC su T0 annullata"
+        echo >>"eventlog.txt" "Calibrazione T0 annullata dall'utente"
+        abort "Calibrazione parcheggio T0 annullata"
 
 M400
 echo >>"yPT0-offset.g" "set global.yPT0Position = " ^ move.axes[1].min - move.axes[1].machinePosition
 G0 C0 F6000
 M400
-M291 R"Calibrazione Parcheggio T0 - Calibrazione Completata" P"Avvio della procedura di test per verificare il corretto rilascio dell'utensile."
-M291 R"Calibrazione Parcheggio T0 - Test di Verifica" P"Esecuzione dell'azzeramento dell'asse Y per la verifica finale."
+
+echo "=========================================="
+echo "FASE 6 T0: SALVATAGGIO OFFSET"
+echo "Posizione Y finale: ", move.axes[1].machinePosition
+echo "Min Y: ", move.axes[1].min
+echo "Offset calcolato: ", move.axes[1].min - move.axes[1].machinePosition
+echo "File: yPT0-offset.g"
+echo "=========================================="
+echo >>"eventlog.txt" "FASE 6 T0: SALVATAGGIO OFFSET - Valore: ", move.axes[1].min - move.axes[1].machinePosition, " a ", state.time
+
+M291 R"Calibrazione T0 - Test Verifica" P"Avvio procedura di test per verificare funzionamento corretto del sistema." S0 T3
+M291 R"Calibrazione T0 - Test Azzeramento" P"Azzeramento asse Y per verifica finale." S0 T3
 M98 P"yPT0-offset.g"
 G90
 G0 Y{move.axes[1].min} F4000
@@ -77,81 +154,160 @@ G28 Y
 T0
 M400
 G0 Y0
-M291 R"Calibrazione Parcheggio T0 - Verifica Aggancio" P"Verificare visivamente che l'utensile sia correttamente agganciato e posizionato. L'utensile risulta correttamente inserito?" S2
+
+echo "=========================================="
+echo "FASE 7 T0: TEST VERIFICA"
+echo "Test aggancio T0 in corso"
+echo "=========================================="
+echo >>"eventlog.txt" "FASE 7 T0: TEST VERIFICA - Inizio a ", state.time
+
+M291 R"Calibrazione T0 - Verifica Aggancio" P"Controllare visivamente corretto aggancio utensile. Utensile agganciato correttamente?" S2
 T-1
-M291 R"Calibrazione Parcheggio T0 - Verifica Parcheggio" P"Verificare che l'utensile sia correttamente parcheggiato nella posizione di riposo. Il parcheggio risulta corretto?" S2
-M291 R"Calibrazione Parcheggio T0 - Procedura Terminata" S2 P"La calibrazione del parcheggio per l'utensile T0 è stata completata con successo."
+M291 R"Calibrazione T0 - Verifica Parcheggio" P"Controllare corretto posizionamento utensile in posizione riposo. Parcheggio OK?" S2
 
+echo "=========================================="
+echo "T0: CALIBRAZIONE COMPLETATA"
+echo "Valore offset: ", global.yPT0Position, "mm"
+echo "Data completamento: ", state.time
+echo "=========================================="
+echo >>"eventlog.txt" "T0: CALIBRAZIONE COMPLETATA - Offset finale: ", global.yPT0Position, "mm a ", state.time
 
-M291 R"Calibrazione Parcheggio T1 - AVVERTENZA IMPORTANTE" P"ATTENZIONE: Questa procedura cancellerà tutti gli offset! Procedere esclusivamente se strettamente necessario e sotto supervisione dell'assistenza tecnica." S2
+M291 R"Calibrazione T0 - Completata" S2 P"Calibrazione parcheggio T0 conclusa con successo."
+
+; ========================================
+; CALIBRAZIONE PARCHEGGIO T1
+; ========================================
+echo "=========================================="
+echo "AVVIO CALIBRAZIONE PARCHEGGIO T1"
+echo "=========================================="
+echo >>"eventlog.txt" "AVVIO CALIBRAZIONE PARCHEGGIO T1: ", state.time
+
+M291 R"Calibrazione Parcheggio T1 - Attenzione" P"AVVISO: Questa procedura eliminera tutti gli offset esistenti! Procedere solo se necessario e con supervisione tecnica." S2
 M30 sys/yPT1-offset.g
-M291 R"Calibrazione Parcheggio T1 - Fase di Homing" P"Esecuzione dell'azzeramento degli assi in corso. Attendere il completamento dell'operazione."
+
+echo "=========================================="
+echo "FASE 1 T1: PREPARAZIONE"
+echo "Eliminazione file di configurazione precedente"
+echo "=========================================="
+echo >>"eventlog.txt" "FASE 1 T1: PREPARAZIONE - Inizio procedura a ", state.time
+
+M291 R"Calibrazione Parcheggio T1 - Homing" P"Azzeramento assi in corso. Attendere il completamento della procedura." S0 T5
 G0 Z200 F1500
 M564 H0 S0 ;disabilita i limiti software e permette di muovere assi non azzerati
 G0 X{global.xPT1Position} Y200 F10000
-M291 R"Calibrazione Parcheggio T1 - Posizionamento Utensile" P"Posizionare manualmente l'utensile T1 sul sistema di cambio utensile (ToolChange). Verificare il corretto allineamento prima di premere OK per continuare." S2
+
+echo "=========================================="
+echo "FASE 2 T1: POSIZIONAMENTO"
+echo "Posizione X: ", global.xPT1Position
+echo "Posizione Y: 200"
+echo "=========================================="
+echo >>"eventlog.txt" "FASE 2 T1: POSIZIONAMENTO - X:", global.xPT1Position, " Y:200"
+
+M291 R"Calibrazione Parcheggio T1 - Posizionamento" P"Posizionare manualmente utensile T1 sul sistema di cambio. Verificare allineamento prima di continuare." S2
 G0 C60 F6000
-M291 R"Calibrazione Parcheggio T1 - Verifica Stabilità" P"Verificare che l'utensile sia correttamente sostenuto e stabile. RIMUOVERE IMMEDIATAMENTE le mani dall'area di stampa prima di procedere. Premere OK" S2
+M291 R"Calibrazione Parcheggio T1 - Sicurezza" P"Verificare che utensile sia stabile. RIMUOVERE SUBITO le mani dalla zona di stampa. Premere OK per procedere." S2
 G0 Y{move.axes[1].min} F3000
 M564 H0 S0
 G91
+
+echo "=========================================="
+echo "FASE 3 T1: AVVICINAMENTO GROSSOLANO"
+echo "Movimento verso il minimo Y: ", move.axes[1].min
+echo "=========================================="
+echo >>"eventlog.txt" "FASE 3 T1: AVVICINAMENTO GROSSOLANO - Minimo Y:", move.axes[1].min
+
 while true
-    M291 R"Calibrazione T1, avvicinati a 5mm dalle spine di parcheggio" P"Scegliere l'azione:" S4 K{"-5mm","+5mm","Prossima Fase","CANCELLA"}
+    M291 R"Calibrazione T1 - Avvicinamento" P"Regolare posizione rispetto alle spine di parcheggio:" S4 K{"-5mm","+5mm","Prossima Fase","Annulla"}
     if input = 0
         G91
         G1 Y-5 F600
         G90
         M400
+        echo "Movimento Y: -5mm - Posizione attuale: ", move.axes[1].machinePosition
     elif input = 1
         G91
         G1 Y5 F600
         G90
         M400
-	elif input = 2
+        echo "Movimento Y: +5mm - Posizione attuale: ", move.axes[1].machinePosition
+    elif input = 2
+        echo "Fase grossolana completata - Posizione finale: ", move.axes[1].machinePosition
+        echo >>"eventlog.txt" "T1 Fase grossolana completata - Posizione: ", move.axes[1].machinePosition
         break
     elif input = 3
-        abort "Calibrazione TC su T1 annullata"
+        echo >>"eventlog.txt" "Calibrazione T1 annullata dall'utente"
+        abort "Calibrazione parcheggio T1 annullata"
+
+echo "=========================================="
+echo "FASE 4 T1: REGOLAZIONE MEDIA"
+echo "=========================================="
+echo >>"eventlog.txt" "FASE 4 T1: REGOLAZIONE MEDIA"
 
 while true
-    M291 R"Calibrazione T1 Fine, centra le spine fino a inserirne metà nel tool" P"Scegliere l'azione:" S4 K{"-1mm","+1mm","Prossima Fase","CANCELLA"}
+    M291 R"Calibrazione T1 - Regolazione Media" P"Centrare spine inserendole parzialmente nel tool:" S4 K{"-1mm","+1mm","Prossima Fase","Annulla"}
     if input = 0
         G91
         G1 Y-1 F400
         G90
         M400
+        echo "Movimento Y: -1mm - Posizione attuale: ", move.axes[1].machinePosition
     elif input = 1
         G91
         G1 Y1 F400
         G90
         M400
-	elif input = 2
+        echo "Movimento Y: +1mm - Posizione attuale: ", move.axes[1].machinePosition
+    elif input = 2
+        echo "Fase media completata - Posizione finale: ", move.axes[1].machinePosition
+        echo >>"eventlog.txt" "T1 Fase media completata - Posizione: ", move.axes[1].machinePosition
         break
     elif input = 3
-        abort "Calibrazione TC su T1 annullata"
+        echo >>"eventlog.txt" "Calibrazione T1 annullata dall'utente"
+        abort "Calibrazione parcheggio T1 annullata"
+
+echo "=========================================="
+echo "FASE 5 T1: REGOLAZIONE FINE"
+echo "=========================================="
+echo >>"eventlog.txt" "FASE 5 T1: REGOLAZIONE FINE"
 
 while true
-    M291 R"Calibrazione T1 Fine, inserisci spessimetro tra parcheggio e profilo di alluminio e muovi il tool fino a sentire una resistenza" P"Scegliere l'azione:" S4 K{"-0.1mm","+0.1mm","Salva Parcheggio T1","CANCELLA"}
+    M291 R"Calibrazione T1 - Regolazione Fine" P"Inserire spessimetro tra parcheggio e profilo alluminio. Regolare fino a sentire resistenza:" S4 K{"-0.1mm","+0.1mm","Salva Posizione","Annulla"}
     if input = 0
         G91
         G1 Y-0.1 F200
         G90
         M400
+        echo "Movimento Y: -0.1mm - Posizione attuale: ", move.axes[1].machinePosition
     elif input = 1
         G91
         G1 Y0.1 F200
         G90
         M400
-	elif input = 2
+        echo "Movimento Y: +0.1mm - Posizione attuale: ", move.axes[1].machinePosition
+    elif input = 2
+        echo "Fase fine completata - Posizione finale: ", move.axes[1].machinePosition
+        echo >>"eventlog.txt" "T1 Fase fine completata - Posizione: ", move.axes[1].machinePosition
         break
     elif input = 3
-        abort "Calibrazione TC su T1 annullata"
+        echo >>"eventlog.txt" "Calibrazione T1 annullata dall'utente"
+        abort "Calibrazione parcheggio T1 annullata"
 
 M400
 echo >>"yPT1-offset.g" "set global.yPT1Position = " ^ move.axes[1].min - move.axes[1].machinePosition
 G0 C0 F18000
 M400
-M291 R"Calibrazione Parcheggio T1 - Calibrazione Completata" P"Avvio della procedura di test per verificare il corretto rilascio dell'utensile."
-M291 R"Calibrazione Parcheggio T1 - Test di Verifica" P"Esecuzione dell'azzeramento dell'asse Y per la verifica finale."
+
+echo "=========================================="
+echo "FASE 6 T1: SALVATAGGIO OFFSET"
+echo "Posizione Y finale: ", move.axes[1].machinePosition
+echo "Min Y: ", move.axes[1].min
+echo "Offset calcolato: ", move.axes[1].min - move.axes[1].machinePosition
+echo "File: yPT1-offset.g"
+echo "=========================================="
+echo >>"eventlog.txt" "FASE 6 T1: SALVATAGGIO OFFSET - Valore: ", move.axes[1].min - move.axes[1].machinePosition, " a ", state.time
+
+M291 R"Calibrazione T1 - Test Verifica" P"Avvio procedura di test per verificare funzionamento corretto del sistema." S0 T3
+M291 R"Calibrazione T1 - Test Azzeramento" P"Azzeramento asse Y per verifica finale." S0 T3
 M98 P"yPT1-offset.g"
 G90
 G0 Y{move.axes[1].min} F4000
@@ -159,8 +315,50 @@ G28 Y
 T1 
 M400
 G0 Y0
-M291 R"Calibrazione Parcheggio T1 - Verifica Aggancio" P"Verificare visivamente che l'utensile sia correttamente agganciato e posizionato. L'utensile risulta correttamente inserito?" S2
-T-1
-M291 R"Calibrazione Parcheggio T1 - Verifica Parcheggio" P"Verificare che l'utensile sia correttamente parcheggiato nella posizione di riposo. Il parcheggio risulta corretto?" S2
-M291 R"Calibrazione Parcheggio T1 - Procedura Terminata" S2 P"La calibrazione del parcheggio per l'utensile T1 è stata completata con successo."
 
+echo "=========================================="
+echo "FASE 7 T1: TEST VERIFICA"
+echo "Test aggancio T1 in corso"
+echo "=========================================="
+echo >>"eventlog.txt" "FASE 7 T1: TEST VERIFICA - Inizio a ", state.time
+
+M291 R"Calibrazione T1 - Verifica Aggancio" P"Controllare visivamente corretto aggancio utensile. Utensile agganciato correttamente?" S2
+T-1
+M291 R"Calibrazione T1 - Verifica Parcheggio" P"Controllare corretto posizionamento utensile in posizione riposo. Parcheggio OK?" S2
+
+echo "=========================================="
+echo "T1: CALIBRAZIONE COMPLETATA"
+echo "Valore offset: ", global.yPT1Position, "mm"
+echo "Data completamento: ", state.time
+echo "=========================================="
+echo >>"eventlog.txt" "T1: CALIBRAZIONE COMPLETATA - Offset finale: ", global.yPT1Position, "mm a ", state.time
+
+M291 R"Calibrazione T1 - Completata" S2 P"Calibrazione parcheggio T1 conclusa con successo."
+
+; ========================================
+; RIEPILOGO FINALE
+; ========================================
+echo "=========================================="
+echo "RIEPILOGO FINALE CALIBRAZIONE PARCHEGGIO"
+echo "=========================================="
+echo "Stato: Calibrazione completata con successo"
+echo "T0 Offset Y: ", global.yPT0Position, "mm"
+echo "T1 Offset Y: ", global.yPT1Position, "mm"
+echo "X Posizione T0: ", global.xPT0Position, "mm"
+echo "X Posizione T1: ", global.xPT1Position, "mm"
+echo "File generati: yPT0-offset.g, yPT1-offset.g"
+echo "Data completamento: ", state.time
+echo "=========================================="
+
+echo >>"eventlog.txt" "=========================================="
+echo >>"eventlog.txt" "RIEPILOGO FINALE CALIBRAZIONE PARCHEGGIO"
+echo >>"eventlog.txt" "Stato: Calibrazione completata con successo"
+echo >>"eventlog.txt" "T0 Offset Y: ", global.yPT0Position, "mm"
+echo >>"eventlog.txt" "T1 Offset Y: ", global.yPT1Position, "mm"
+echo >>"eventlog.txt" "X Posizione T0: ", global.xPT0Position, "mm"
+echo >>"eventlog.txt" "X Posizione T1: ", global.xPT1Position, "mm"
+echo >>"eventlog.txt" "File generati: yPT0-offset.g, yPT1-offset.g"
+echo >>"eventlog.txt" "Data completamento: ", state.time
+echo >>"eventlog.txt" "=========================================="
+
+M291 R"Calibrazione Completata" P"Procedura di calibrazione parcheggio T0 e T1 conclusa con successo! Sistema pronto per utilizzo." S2
