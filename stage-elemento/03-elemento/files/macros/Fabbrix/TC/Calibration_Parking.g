@@ -90,7 +90,7 @@ while var.again
         elif var.phase = 3
             ; Fase 3/3 - Fine: passi da 0.1mm con spessimetro
             while true
-                M291 P{"[M] T"^ var.tool ^ " - Inserisci spessimetro fino a sentire resistenza. Serra il parcheggio"} R{"T" ^ var.tool ^ " - Fase 3/3: Fine"} S4 K{"-0.1mm","+0.1mm","[K] << Fase Prec.","[O] Salva Parcheggio","[W] Annulla"}
+                M291 P{"[M] Inserisci spessimetro fino a sentire resistenza. Serra il parcheggio"} R{"T" ^ var.tool ^ " - Fase 3/3: Fine"} S4 K{"-0.1mm","+0.1mm","[K] << Fase Prec.","[O] Salva Parcheggio","[W] Annulla"}
                 if input = 0
                     G91
                     G1 Y-0.1 F200

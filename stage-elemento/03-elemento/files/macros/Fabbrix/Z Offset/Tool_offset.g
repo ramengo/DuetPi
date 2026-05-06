@@ -7,6 +7,9 @@ var zMediumStep    = 1
 var zFineStep      = 0.2
 var zUltraFineStep = 0.05
 
+M104 T0 S150
+M104 T1 S150
+
 ; ========================================
 ; PREPARAZIONE (eseguita una sola volta)
 ; ========================================
@@ -40,8 +43,9 @@ G1 X{move.axes[0].max/2} Y{move.axes[1].max/2} F2000
 M18 C
 T0 P0
 G30
+M98 P"0:/macros/Fabbrix/Bed/scanning_speed.g"
 T-1 P0
-G29 S2
+;G29 S2
 
 M291 P"[S] Riferimento G30 stabilito. Seleziona il tool da calibrare." R"Riferimento Creato" S0 T3
 
@@ -170,6 +174,8 @@ while var.again
                     G10 L1 P{var.tool} Z{-(move.axes[2].machinePosition)}
                     M500 P10
                     M501
+					G1 Z50 F600
+					T-1
                     echo >>"eventlog.txt" "Z OFFSET SALVATO - T" ^ var.tool ^ ": " ^ -(move.axes[2].machinePosition) ^ "mm a " ^ state.time
                     set var.phase = 5
                     break
