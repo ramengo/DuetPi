@@ -6,7 +6,9 @@
       "Bash(ConvertTo-Json)",
       "Bash(Out-String)",
       "PowerShell(cd \"c:\\\\Users\\\\angelo\\\\Documents\\\\Claude\\\\Projects\\\\Duet3D Printer\\\\DuetPi\"; Get-ChildItem -Force | Format-Table -Property Name, @{Name='Type'; Expression={if\\($_.PSIsContainer\\) {'DIR'} else {'FILE'}}}  -AutoSize)",
-      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\angelo\\\\Documents\\\\Claude\\\\Projects\\\\Duet3D Printer\\\\DuetPi\\\\stage-elemento-5tc\\\\\" -Recurse -Force | Select-Object FullName | head -100)"
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\angelo\\\\Documents\\\\Claude\\\\Projects\\\\Duet3D Printer\\\\DuetPi\\\\stage-elemento-5tc\\\\\" -Recurse -Force | Select-Object FullName | head -100)",
+      "Bash(python3 generate_baby_test.py)",
+      "Bash(awk 'NR==1 || NR==3 || NR==5 || NR==7 || NR==9 || NR==11')"
     ]
   }
 }
