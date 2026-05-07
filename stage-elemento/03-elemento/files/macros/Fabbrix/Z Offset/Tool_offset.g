@@ -20,7 +20,7 @@ M291 P"[I] Sequenza: 1) Reset offset  2) Tilt bed  3) Riferimento G30  4) Calibr
 M290 S0 R0
 M561
 M501
-G29 S2
+;G29 S2
 
 ; Calibrazione tilt fisico
 T-1
@@ -36,15 +36,8 @@ else
     if input = 1
         abort "Calibrazione interrotta: tilt troppo elevato."
 
-; Riferimento G30 sul bed fisico senza compensazione
-G1 Z50 F1000
-M400
-G1 X{move.axes[0].max/2} Y{move.axes[1].max/2} F2000
-M18 C
-T0 P0
-G30
-M98 P"0:/macros/Fabbrix/Bed/scanning_speed.g"
-T-1 P0
+; Riferimento Z unificato: stessa procedura di homez.g (T-1, centro, G30)
+G28 Z
 ;G29 S2
 
 M291 P"[S] Riferimento G30 stabilito. Seleziona il tool da calibrare." R"Riferimento Creato" S0 T3
@@ -61,9 +54,6 @@ while var.again
     if input = 2
         abort "Calibrazione terminata."
     var tool = input
-
-    ; Homing completo prima del posizionamento
-    G28
 
     ; Posiziona il tool al centro del bed
     G1 Z50 F600
