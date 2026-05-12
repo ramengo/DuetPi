@@ -224,5 +224,12 @@ M501
 ; Unlock door
 M1201
 
+; Tool usage counters — init + ripristino dati persistiti
+M98 P"tool_counters_init.g"
+if fileexists("0:/sys/toolstats_data.g")
+	M98 P"toolstats_data.g"
+set global.tcLastUpdateS = state.upTime
+set global.tcReady = false
+
 ; Start logging (level 1 = info; use M929 S3 solo per debug temporaneo)
 M929 S1

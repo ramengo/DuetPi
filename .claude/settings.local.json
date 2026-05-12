@@ -8,7 +8,12 @@
       "PowerShell(cd \"c:\\\\Users\\\\angelo\\\\Documents\\\\Claude\\\\Projects\\\\Duet3D Printer\\\\DuetPi\"; Get-ChildItem -Force | Format-Table -Property Name, @{Name='Type'; Expression={if\\($_.PSIsContainer\\) {'DIR'} else {'FILE'}}}  -AutoSize)",
       "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\angelo\\\\Documents\\\\Claude\\\\Projects\\\\Duet3D Printer\\\\DuetPi\\\\stage-elemento-5tc\\\\\" -Recurse -Force | Select-Object FullName | head -100)",
       "Bash(python3 generate_baby_test.py)",
-      "Bash(awk 'NR==1 || NR==3 || NR==5 || NR==7 || NR==9 || NR==11')"
+      "Bash(awk 'NR==1 || NR==3 || NR==5 || NR==7 || NR==9 || NR==11')",
+      "WebSearch",
+      "WebFetch(domain:forum.duet3d.com)",
+      "WebFetch(domain:www.duet3d.com)",
+      "WebFetch(domain:reprap.org)",
+      "Bash(awk '{print length}' \"/home/angelo/DuetPi/stage-elemento/03-elemento/files/macros/Fabbrix/Bed/zTouchModeCalibration.g\")"
     ]
   }
 }
