@@ -187,6 +187,7 @@ M98 P"yPT1-offset.g"
 ; Load Config saved
 M98 P"TC.conf"
 ;M98 P"TCb.conf"
+M555 P2
 M501
 
 ;unlock door
