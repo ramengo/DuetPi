@@ -7,8 +7,14 @@ var zMediumStep    = 1
 var zFineStep      = 0.2
 var zUltraFineStep = 0.05
 
-M104 T0 S150
-M104 T1 S150
+; Numero di tool installati (aggiornare qui per aggiungere/rimuovere tool)
+var numTools = 2
+
+; Riscalda tutti i tool
+var ti = 0
+while var.ti < var.numTools
+    M104 T{var.ti} S150
+    set var.ti = var.ti + 1
 
 ; ========================================
 ; PREPARAZIONE (eseguita una sola volta)
@@ -164,8 +170,8 @@ while var.again
                     G10 L1 P{var.tool} Z{-(move.axes[2].machinePosition)}
                     M500 P10
                     M501
-					G1 Z50 F600
-					T-1
+                    G1 Z50 F600
+                    T-1
                     echo >>"eventlog.txt" "Z OFFSET SALVATO - T" ^ var.tool ^ ": " ^ -(move.axes[2].machinePosition) ^ "mm a " ^ state.time
                     set var.phase = 5
                     break
@@ -184,3 +190,29 @@ G1 Z50 F600
 T-1
 
 M291 P{"[S] T0 offset Z: " ^ tools[0].offsets[2] ^ " mm\nT1 offset Z: " ^ tools[1].offsets[2] ^ " mm\nDelta T0-T1:  " ^ (tools[0].offsets[2] - tools[1].offsets[2]) ^ " mm"} R"Riepilogo Calibrazione Z" S1
+
+; ========================================
+; CALIBRAZIONE ALTEZZA MASSIMA (automatica H3)
+; ========================================
+M291 P"[I] Vuoi calibrare l'altezza massima della stampante?\nLa testa si muoverà lentamente verso l'alto fino al sensore Z max." R"Altezza Massima Z" S4 K{"[O] Sì, calibra automaticamente","[K] No, esci"}
+if input = 0
+
+    ; Portarsi al centro prima di salire (T-1: nessun offset tool applicato)
+    T-1
+    G1 X{move.axes[0].max/2} Y{move.axes[1].max/2} F3000
+
+    M291 P"[W] La testa si muoverà verso l'alto fino al sensore Z max.\nH3 imposta M208 Z automaticamente alla posizione di scatto." R"Altezza Massima Z" S2
+
+    ; H3: ignora i limiti attuali, sente l'endstop e imposta M208 Z alla posizione rilevata
+    G1 Z{move.axes[2].max + 200} H3 F180
+    M400
+
+    echo >>"eventlog.txt" "ALTEZZA MASSIMA RILEVATA (H3): " ^ move.axes[2].machinePosition ^ "mm a " ^ state.time
+
+    ; M500 senza P salva tutto in config-override.g:
+    ; tool offsets già corretti in memoria (caricati via M501 in precedenza) + nuovo M208 Z
+    M500
+
+    M291 P{"[S] Altezza massima rilevata e salvata: " ^ move.axes[2].machinePosition ^ " mm"} R"Altezza Massima Z" S0 T3
+
+    G1 Z50 F600
